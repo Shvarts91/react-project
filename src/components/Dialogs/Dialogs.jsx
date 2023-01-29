@@ -2,9 +2,9 @@ import React from 'react'
 import s from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem'
 import Message from './Message/Message'
-import { Field, Form, Formik, ErrorMessage } from 'formik'
+import { Field, Form, Formik } from 'formik'
 import * as Yup from 'yup'
-import { TextareaField } from '../FormsControls/FormsControls'
+import { ElemForm } from '../FormsControls/FormsControls'
 
 const Dialogs = (props) => {
   let dialogElements = props.dialogsPage.dialogs.map((d) => (
@@ -52,7 +52,8 @@ const AddMessageForm = (props) => {
             <Field
               placeholder="Enter your message"
               name="enterMessage"
-              component={TextareaField}
+              component={ElemForm}
+              typeField={'textarea'}
             />
 
             <div>

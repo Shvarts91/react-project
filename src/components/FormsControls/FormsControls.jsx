@@ -32,29 +32,42 @@ import s from './FormsControls.module.css'
 //   //)
 // }
 
-export const TextareaField = ({
-  field,
-  form: { touched, errors },
-  ...props
-}) => {
+// export const TextareaField = ({
+//   field,
+//   form: { touched, errors },
+//   ...props
+// }) => {
+//   const hasError = touched[field.name] && errors[field.name]
+
+//   return (
+//     <div className={s.formControl + ' ' + (hasError ? s.error : '')}>
+//       <textarea {...field} {...props} />
+//       {touched[field.name] && errors[field.name] && (
+//         <div className={s.error}>{errors[field.name]}</div>
+//       )}
+//     </div>
+//   )
+// }
+
+// export const InputField = ({ field, form: { touched, errors }, ...props }) => {
+//   const hasError = touched[field.name] && errors[field.name]
+
+//   return (
+//     <div className={s.formControl + ' ' + (hasError ? s.error : '')}>
+//       <input {...field} {...props} />
+//       {touched[field.name] && errors[field.name] && (
+//         <div className={s.error}>{errors[field.name]}</div>
+//       )}
+//     </div>
+//   )
+// }
+
+export const ElemForm = ({ field, form: { touched, errors }, ...props }) => {
   const hasError = touched[field.name] && errors[field.name]
 
   return (
     <div className={s.formControl + ' ' + (hasError ? s.error : '')}>
-      <textarea {...field} {...props} />
-      {touched[field.name] && errors[field.name] && (
-        <div className={s.error}>{errors[field.name]}</div>
-      )}
-    </div>
-  )
-}
-
-export const InputField = ({ field, form: { touched, errors }, ...props }) => {
-  const hasError = touched[field.name] && errors[field.name]
-
-  return (
-    <div className={s.formControl + ' ' + (hasError ? s.error : '')}>
-      <input {...field} {...props} />
+      <props.typeField {...field} {...props} />
       {touched[field.name] && errors[field.name] && (
         <div className={s.error}>{errors[field.name]}</div>
       )}

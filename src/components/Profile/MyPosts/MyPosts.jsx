@@ -1,18 +1,18 @@
-import React from "react";
-import s from "./MyPosts.module.css";
-import Post from "./Post/Post";
-import { Field, Form, Formik, ErrorMessage } from "formik";
-import * as Yup from "yup";
-import { Textarea, TextareaField } from "../../FormsControls/FormsControls";
+import React from 'react'
+import s from './MyPosts.module.css'
+import Post from './Post/Post'
+import { Field, Form, Formik } from 'formik'
+import * as Yup from 'yup'
+import { ElemForm } from '../../FormsControls/FormsControls'
 
 const MyPosts = (props) => {
   let postsElements = props.posts.map((post) => (
     <Post message={post.message} likesCount={post.likesCount} />
-  ));
+  ))
 
   let onAddPost = (data) => {
-    props.addPost(data.addPost);
-  };
+    props.addPost(data.addPost)
+  }
 
   return (
     <div className={s.postsBlock}>
@@ -21,23 +21,23 @@ const MyPosts = (props) => {
       <AddPostForm addPost={onAddPost} />
       <div className={s.posts}>{postsElements}</div>
     </div>
-  );
-};
+  )
+}
 
 const AddPostForm = (props) => {
   return (
     <Formik
       initialValues={{
-        addPost: "",
+        addPost: '',
       }}
       onSubmit={(values, action) => {
-        props.addPost(values);
-        action.resetForm();
+        props.addPost(values)
+        action.resetForm()
       }}
       validationSchema={Yup.object({
         addPost: Yup.string()
-          .max(5, "Must be 5 characters or less")
-          .required("Required"),
+          .max(5, 'Must be 5 characters or less')
+          .required('Required'),
       })}
     >
       {(props) => {
@@ -54,15 +54,15 @@ const AddPostForm = (props) => {
             </div>
           </form>*/
           <Form>
-            <Field name="addPost" component={TextareaField} />
+            <Field name="addPost" component={ElemForm} typeField={'textarea'} />
             <div>
               <button type="submit">Add post</button>
             </div>
           </Form>
-        );
+        )
       }}
     </Formik>
-  );
-};
+  )
+}
 
-export default MyPosts;
+export default MyPosts
