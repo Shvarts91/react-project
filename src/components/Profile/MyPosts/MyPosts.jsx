@@ -3,7 +3,7 @@ import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Textarea, TextareaField } from "../../FormsControls/FormsControls";
+import { InputField, TextareaField } from "../../FormsControls/FormsControls";
 
 const MyPosts = (props) => {
   let postsElements = props.posts.map((post) => (
@@ -54,7 +54,7 @@ const AddPostForm = (props) => {
             </div>
           </form>*/
           <Form>
-            <Field name="addPost" component={TextareaField} />
+            <Field name="addPost" component={InputField} type="textarea" />
             <div>
               <button type="submit">Add post</button>
             </div>
