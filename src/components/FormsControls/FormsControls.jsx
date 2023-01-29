@@ -49,12 +49,12 @@ export const TextareaField = ({
   )
 }
 
-export const InputField = ({ field, form: { touched, errors }, ...props }) => {
+export const InputField = ({ field, form: { touched, errors }, type, ...props }) => {
   const hasError = touched[field.name] && errors[field.name]
 
   return (
     <div className={s.formControl + ' ' + (hasError ? s.error : '')}>
-      <input {...field} {...props} />
+      {type === 'textarea' ?  <textarea {...field} {...props} /> : <input {...field} {...props} />}
       {touched[field.name] && errors[field.name] && (
         <div className={s.error}>{errors[field.name]}</div>
       )}
