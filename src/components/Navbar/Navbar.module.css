@@ -1,0 +1,22 @@
+.nav {
+  grid-area: n;
+  background-color: rgb(135, 148, 222);
+  padding: 20px;
+}
+.item {
+  font-size: 20px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.item:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.item a {
+  color: white;
+  text-decoration: none;
+}
+
+.item .active {
+  color: gold;
+}
