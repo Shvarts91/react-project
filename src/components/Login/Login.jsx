@@ -1,25 +1,31 @@
 import React from 'react'
 import { Field, Form, Formik } from 'formik'
-import { ElemForm, InputField } from '../FormsControls/FormsControls'
+import { ElemForm } from '../FormsControls/FormsControls'
 import * as Yup from 'yup'
+import { connect } from 'react-redux'
+import { login } from '../../redux/auth-reducer'
+import { redirect } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const LoginForm = (props) => {
   return (
     <Formik
       initialValues={{
-        login: '',
+        email: '',
         password: '',
-        remember: false,
+        rememberMe: false,
+        isValidating: true,
       }}
       onSubmit={(values) => {
-        console.log(values)
+        props.login(values.email, values.password, values.rememberMe)
       }}
       validationSchema={Yup.object({
-        login: Yup.string().required('Required'),
+        email: Yup.string().required('Required'),
         password: Yup.string()
           .min(5, 'Must be min 5 characters')
           .required('Required'),
-        remember: Yup.string().required('Required'),
+        rememberMe: Yup.string().required('Required'),
       })}
     >
       {(form) => {
@@ -28,8 +34,8 @@ const LoginForm = (props) => {
             <div>
               <Field
                 component={ElemForm}
-                name="login"
-                placeholder={'Login'}
+                name="email"
+                placeholder={'Email'}
                 type={'input'}
                 typeField="input"
               />
@@ -46,11 +52,10 @@ const LoginForm = (props) => {
             <div>
               <Field
                 component={ElemForm}
-                name="remember"
+                name="rememberMe"
                 type={'checkbox'}
                 typeField="input"
-                required
-              />{' '}
+              />
               remember me
             </div>
             <div>
@@ -70,13 +75,30 @@ const LoginForm = (props) => {
   )
 }
 
-const Login = () => {
+const Login = (props) => {
+  const navigate = useNavigate()
+  useEffect(
+    () => {
+      if (props.isAuth) {
+        navigate('/profile')
+      }
+    },
+    [props.isAuth]
+  )
+
   return (
     <div>
       <h1>LOGIN</h1>
-      <LoginForm />
+      <LoginForm login={props.login} />
     </div>
   )
 }
 
-export default Login
+const mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth,
+})
+
+export default connect(
+  mapStateToProps,
+  { login }
+)(Login)
