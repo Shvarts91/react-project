@@ -4,9 +4,9 @@ import { ElemForm } from '../FormsControls/FormsControls'
 import * as Yup from 'yup'
 import { connect } from 'react-redux'
 import { login } from '../../redux/auth-reducer'
-import { redirect } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import s from './../FormsControls/FormsControls.module.css'
 
 const LoginForm = (props) => {
   return (
@@ -15,17 +15,26 @@ const LoginForm = (props) => {
         email: '',
         password: '',
         rememberMe: false,
-        isValidating: true,
       }}
-      onSubmit={(values) => {
-        props.login(values.email, values.password, values.rememberMe)
+      onSubmit={async (values, actions) => {
+        const response = await props.login(
+          values.email,
+          values.password,
+          values.rememberMe
+        )
+        console.log(response)
+        if (response.messages.length) {
+          actions.setErrors({ validationError: response.messages[0] })
+        }
       }}
-      validationSchema={Yup.object({
-        email: Yup.string().required('Required'),
-        password: Yup.string()
-          .min(5, 'Must be min 5 characters')
+      validationSchema={Yup.object().shape({
+        email: Yup.string()
+          .email('Invalid email')
           .required('Required'),
-        rememberMe: Yup.string().required('Required'),
+        password: Yup.string()
+          .min(2, 'Too Short!')
+          .max(50, 'Too Long!')
+          .required('Required'),
       })}
     >
       {(form) => {
@@ -58,6 +67,10 @@ const LoginForm = (props) => {
               />
               remember me
             </div>
+            {form.errors.validationError && (
+              <div className={s.formError}>{form.errors.validationError}</div>
+            )}
+
             <div>
               <button
                 // onClick={() => {

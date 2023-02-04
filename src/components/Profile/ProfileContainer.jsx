@@ -22,13 +22,13 @@ function withRouter(Component) {
 }
 
 class ProfileContainer extends React.Component {
-  componentDidMount() {
-    let userId = this.props.router.params.userId
-    if (!userId) {
-      userId = 2
+  componentDidUpdate(prevProps) {
+    if (prevProps.authorizedUserId !== this.props.authorizedUserId) {
+      let userId = this.props.authorizedUserId
+
+      this.props.profileThunkCreator(userId)
+      this.props.getUsersStatusThunk(userId)
     }
-    this.props.profileThunkCreator(userId)
-    this.props.getUsersStatusThunk(userId)
   }
 
   render() {
@@ -48,6 +48,8 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
   status: state.profilePage.status,
+  authorizedUserId: state.auth.userId,
+  isAuth: state.auth.isAuth,
 })
 
 export default compose(
