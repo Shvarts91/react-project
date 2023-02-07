@@ -2,6 +2,8 @@
   grid-area: h;
   background-color: rgba(40, 105, 40, 0.8);
   padding-left: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
 }
 
 .header img {
@@ -15,4 +17,8 @@
 }
 .loginBlock a {
   color: #fff;
+}
+
+.header button {
+  margin-left: 10px;
 }

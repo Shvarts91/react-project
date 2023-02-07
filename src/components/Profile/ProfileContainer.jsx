@@ -7,8 +7,8 @@ import {
   getUsersStatusThunk,
   updateStatusThunk,
 } from '../../redux/profile-reducer'
-
 import { compose } from 'redux'
+import { withAuthRedirect } from '../../hoc/withAuthRedirect'
 
 function withRouter(Component) {
   function ComponentWithRouterProp(props) {
@@ -58,5 +58,5 @@ export default compose(
     { profileThunkCreator, getUsersStatusThunk, updateStatusThunk }
   ),
   withRouter
-  //withAuthRedirect
+  // withAuthRedirect
 )(ProfileContainer)
