@@ -1,22 +1,29 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import s from './Header.module.css'
+import React from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import s from "./Header.module.css";
 
-const Header = (props) => {
+const Header = props => {
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    props.logout();
+    navigate("login");
+  };
+
   return (
     <header className={s.header}>
       <img src="https://cdn.dribbble.com/userupload/3158902/file/original-7c71bfa677e61dea61bc2acd59158d32.jpg?resize=400x0" />
       <div className={s.loginBlock}>
         {props.isAuth ? (
           <div>
-            {props.login} - <button onClick={props.logout}>Log Out</button>
+            {props.login} - <button onClick={handleLogOut}>Log Out</button>
           </div>
         ) : (
-          <NavLink to={'/login'}>Login</NavLink>
+          <NavLink to={"/login"}>Login</NavLink>
         )}
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

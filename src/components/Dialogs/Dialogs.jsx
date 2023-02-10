@@ -8,7 +8,7 @@ import { ElemForm } from '../FormsControls/FormsControls'
 
 const Dialogs = (props) => {
   let dialogElements = props.dialogsPage.dialogs.map((d) => (
-    <DialogItem name={d.name} id={d.id} />
+    <DialogItem key={d.id} name={d.name} id={d.id} />
   ))
 
   let messageElements = props.dialogsPage.messages.map((m) => (

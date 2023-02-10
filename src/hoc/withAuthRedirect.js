@@ -1,24 +1,22 @@
-import { Navigate } from 'react-router-dom'
-import React from 'react'
-import { connect } from 'react-redux'
+import React from "react";
+import { connect } from "react-redux";
+import { Navigate } from "react-router-dom";
 
-let mapStateToPropsForRedirect = (state) => ({
-  isAuth: state.auth.isAuth,
-})
+const mapStateToPropsForRedirect = state => ({
+  isAuth: state.auth.isAuth
+});
 
-export const withAuthRedirect = (Component) => {
-  class RedirectComponent extends React.Component {
-    render() {
-      if (!this.props.isAuth) {
-        return <Navigate to="/login" />
-      }
-      return <Component {...this.props} />
-    }
-  }
+export const withAuthRedirect = WrappedComponent => {
+  const RedirectComponent = props => {
+    let { isAuth, ...restProps } = props;
 
-  let ConnectedAuthRedirectComponent = connect(mapStateToPropsForRedirect)(
-    RedirectComponent
-  )
+    if (!isAuth) return <Navigate to="/login" replace />;
 
-  return ConnectedAuthRedirectComponent
-}
+    return <WrappedComponent {...restProps} />;
+  };
+
+  return connect(
+    mapStateToPropsForRedirect,
+    {}
+  )(RedirectComponent);
+};

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import { withAuthRedirect } from '../../hoc/withAuthRedirect.js'
 import { compose } from 'redux'
+import {withRouter} from "../../hoc/withRouter";
 /*
 const DialogsContainer = () => {
   return (
@@ -56,5 +57,6 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps
   ),
+  withRouter,
   withAuthRedirect
 )(Dialogs)
