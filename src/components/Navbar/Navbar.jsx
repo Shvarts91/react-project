@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom'
 
 const Navbar = (props) => {
   let pageElements = props.pageElements.map((page) => (
-    <div className={s.item}>
+    <div className={s.item} key={page.namePage}>
       <NavLink
-        to={page.namePage}
+        to={page.namePage.toLowerCase()}
         className={(navData) => (navData.isActive ? s.active : s.item)}
       >
         {page.namePage}
