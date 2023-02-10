@@ -1,26 +1,29 @@
-import Users from './Users'
-import { connect } from 'react-redux'
+import Users from "./Users";
+import { connect } from "react-redux";
 import {
   follow,
   unfollow,
   setCurrentPage,
   toggleFollowingProgress,
-  getUsersThunkCreator,
-} from '../../redux/users-reducer'
-import React from 'react'
-import Preloder from '../common/Preloader/Preloader'
-import { withAuthRedirect } from '../../hoc/withAuthRedirect'
-import { compose } from 'redux'
+  getUsersThunkCreator
+} from "../../redux/users-reducer";
+import React from "react";
+import Preloder from "../common/Preloader/Preloader";
+import { compose } from "redux";
+import { withRouter } from "../../hoc/withRouter";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
+    this.props.getUsersThunkCreator(
+      this.props.currentPage,
+      this.props.pageSize
+    );
   }
 
-  onPageChanged = (pageNumber) => {
-    this.props.setCurrentPage(pageNumber)
-    this.props.getUsersThunkCreator(pageNumber, this.props.pageSize)
-  }
+  onPageChanged = pageNumber => {
+    this.props.setCurrentPage(pageNumber);
+    this.props.getUsersThunkCreator(pageNumber, this.props.pageSize);
+  };
 
   render() {
     return (
@@ -38,20 +41,20 @@ class UsersContainer extends React.Component {
           toggleFollowingProgress={this.props.toggleFollowingProgress}
         />
       </>
-    )
+    );
   }
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = state => {
   return {
     users: state.usersPage.users,
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
     isFetching: state.usersPage.isFetching,
-    followingProgress: state.usersPage.followingProgress,
-  }
-}
+    followingProgress: state.usersPage.followingProgress
+  };
+};
 /*
 let mapDispatchToProps = (dispatch) => {
   return {
@@ -84,7 +87,8 @@ export default compose(
       unfollow,
       setCurrentPage,
       toggleFollowingProgress,
-      getUsersThunkCreator,
+      getUsersThunkCreator
     }
-  )
-)(UsersContainer)
+  ),
+  withRouter
+)(UsersContainer);

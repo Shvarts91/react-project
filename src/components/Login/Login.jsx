@@ -1,60 +1,62 @@
-import React from 'react'
-import { Field, Form, Formik } from 'formik'
-import { ElemForm } from '../FormsControls/FormsControls'
-import * as Yup from 'yup'
-import { connect } from 'react-redux'
-import { login } from '../../redux/auth-reducer'
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import s from './../FormsControls/FormsControls.module.css'
+import React from "react";
+import { Field, Form, Formik } from "formik";
+import { ElemForm } from "../FormsControls/FormsControls";
+import * as Yup from "yup";
+import { connect } from "react-redux";
+import { login } from "../../redux/auth-reducer";
+import { useNavigate } from "react-router-dom";
+import s from "./../FormsControls/FormsControls.module.css";
+import { compose } from "redux";
+import { withRouter } from "../../hoc/withRouter";
 
-const LoginForm = (props) => {
+const LoginForm = props => {
+  const navigate = useNavigate();
   return (
     <Formik
       initialValues={{
-        email: '',
-        password: '',
-        rememberMe: false,
+        email: "",
+        password: "",
+        rememberMe: false
       }}
       onSubmit={async (values, actions) => {
         const response = await props.login(
           values.email,
           values.password,
           values.rememberMe
-        )
-        console.log(response)
+        );
         if (response.messages.length) {
-          actions.setErrors({ validationError: response.messages[0] })
+          return actions.setErrors({ validationError: response.messages[0] });
         }
+        navigate("/profile");
       }}
       validationSchema={Yup.object().shape({
         email: Yup.string()
-          .email('Invalid email')
-          .required('Required'),
+          .email("Invalid email")
+          .required("Required"),
         password: Yup.string()
-          .min(2, 'Too Short!')
-          .max(50, 'Too Long!')
-          .required('Required'),
+          .min(2, "Too Short!")
+          .max(50, "Too Long!")
+          .required("Required")
       })}
     >
-      {(form) => {
+      {form => {
         return (
           <Form>
             <div>
               <Field
                 component={ElemForm}
                 name="email"
-                placeholder={'Email'}
-                type={'input'}
+                placeholder={"Email"}
+                type={"input"}
                 typeField="input"
               />
             </div>
             <div>
               <Field
                 component={ElemForm}
-                type={'password'}
+                type={"password"}
                 name="password"
-                placeholder={'Password'}
+                placeholder={"Password"}
                 typeField="input"
               />
             </div>
@@ -62,7 +64,7 @@ const LoginForm = (props) => {
               <Field
                 component={ElemForm}
                 name="rememberMe"
-                type={'checkbox'}
+                type={"checkbox"}
                 typeField="input"
               />
               remember me
@@ -82,36 +84,29 @@ const LoginForm = (props) => {
               </button>
             </div>
           </Form>
-        )
+        );
       }}
     </Formik>
-  )
-}
+  );
+};
 
-const Login = (props) => {
-  const navigate = useNavigate()
-  useEffect(
-    () => {
-      if (props.isAuth) {
-        navigate('/profile')
-      }
-    },
-    [props.isAuth]
-  )
-
+const Login = props => {
   return (
     <div>
       <h1>LOGIN</h1>
       <LoginForm login={props.login} />
     </div>
-  )
-}
+  );
+};
 
-const mapStateToProps = (state) => ({
-  isAuth: state.auth.isAuth,
-})
+const mapStateToProps = state => ({
+  isAuth: state.auth.isAuth
+});
 
-export default connect(
-  mapStateToProps,
-  { login }
-)(Login)
+export default compose(
+  connect(
+    mapStateToProps,
+    { login }
+  ),
+  withRouter
+)(Login);
