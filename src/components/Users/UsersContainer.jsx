@@ -1,29 +1,37 @@
-import Users from "./Users";
-import { connect } from "react-redux";
+import Users from './Users'
+import { connect } from 'react-redux'
 import {
   follow,
   unfollow,
   setCurrentPage,
   toggleFollowingProgress,
-  getUsersThunkCreator
-} from "../../redux/users-reducer";
-import React from "react";
-import Preloder from "../common/Preloader/Preloader";
-import { compose } from "redux";
-import { withRouter } from "../../hoc/withRouter";
+  requestUsersThunkCreator,
+} from '../../redux/users-reducer'
+import React from 'react'
+import Preloder from '../common/Preloader/Preloader'
+import { compose } from 'redux'
+import { withRouter } from '../../hoc/withRouter'
+import {
+  getCurrentPage,
+  getFollowingProgress,
+  getIsFetching,
+  getPageSize,
+  getTotalUsersCount,
+  getUsers,
+} from '../../redux/users-selectors'
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    this.props.getUsersThunkCreator(
+    this.props.requestUsersThunkCreator(
       this.props.currentPage,
       this.props.pageSize
-    );
+    )
   }
 
-  onPageChanged = pageNumber => {
-    this.props.setCurrentPage(pageNumber);
-    this.props.getUsersThunkCreator(pageNumber, this.props.pageSize);
-  };
+  onPageChanged = (pageNumber) => {
+    this.props.setCurrentPage(pageNumber)
+    this.props.requestUsersThunkCreator(pageNumber, this.props.pageSize)
+  }
 
   render() {
     return (
@@ -41,20 +49,20 @@ class UsersContainer extends React.Component {
           toggleFollowingProgress={this.props.toggleFollowingProgress}
         />
       </>
-    );
+    )
   }
 }
 
-let mapStateToProps = state => {
+let mapStateToProps = (state) => {
   return {
-    users: state.usersPage.users,
-    pageSize: state.usersPage.pageSize,
-    totalUsersCount: state.usersPage.totalUsersCount,
-    currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching,
-    followingProgress: state.usersPage.followingProgress
-  };
-};
+    users: getUsers(state),
+    pageSize: getPageSize(state),
+    totalUsersCount: getTotalUsersCount(state),
+    currentPage: getCurrentPage(state),
+    isFetching: getIsFetching(state),
+    followingProgress: getFollowingProgress(state),
+  }
+}
 /*
 let mapDispatchToProps = (dispatch) => {
   return {
@@ -87,8 +95,8 @@ export default compose(
       unfollow,
       setCurrentPage,
       toggleFollowingProgress,
-      getUsersThunkCreator
+      requestUsersThunkCreator,
     }
   ),
   withRouter
-)(UsersContainer);
+)(UsersContainer)
