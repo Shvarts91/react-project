@@ -82,29 +82,20 @@ export const setStatus = (status) => ({
   status,
 })
 
-export const profileThunkCreator = (userId) => {
-  return (dispatch) => {
-    profileApiPage.getProfile(userId).then((data) => {
-      dispatch(setUserProfile(data))
-    })
-  }
+export const profileThunkCreator = (userId) => async (dispatch) => {
+  let data = await profileApiPage.getProfile(userId)
+  dispatch(setUserProfile(data))
 }
 
-export const getUsersStatusThunk = (userId) => {
-  return (dispatch) => {
-    profileApiPage.getStatus(userId).then((data) => {
-      dispatch(setStatus(data))
-    })
-  }
+export const getUsersStatusThunk = (userId) => async (dispatch) => {
+  let data = await profileApiPage.getStatus(userId)
+  dispatch(setStatus(data))
 }
 
-export const updateStatusThunk = (status) => {
-  return (dispatch) => {
-    profileApiPage.updateStatus(status).then((data) => {
-      if (data.resultCode === 0) {
-        dispatch(setStatus(status))
-      }
-    })
+export const updateStatusThunk = (status) => async (dispatch) => {
+  let data = await profileApiPage.updateStatus(status)
+  if (data.resultCode === 0) {
+    dispatch(setStatus(status))
   }
 }
 

@@ -1,26 +1,26 @@
-import React from "react";
-import "./App.css";
-import NavbarContainer from "./components/Navbar/NavbarContainer";
-import { Route, Routes, useNavigate } from "react-router-dom";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import UsersContainer from "./components/Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
-import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/Login/Login";
-import { connect } from "react-redux";
-import { initializeApp } from "./redux/app-reducer";
-import { compose } from "redux";
+import React from 'react'
+import './App.css'
+import NavbarContainer from './components/Navbar/NavbarContainer'
+import { Route, Routes, useNavigate } from 'react-router-dom'
+import DialogsContainer from './components/Dialogs/DialogsContainer'
+import UsersContainer from './components/Users/UsersContainer'
+import ProfileContainer from './components/Profile/ProfileContainer'
+import HeaderContainer from './components/Header/HeaderContainer'
+import Login from './components/Login/Login'
+import { connect } from 'react-redux'
+import { initializeApp } from './redux/app-reducer'
+import { compose } from 'redux'
 
-export const withNavigate = Component => {
-  let RedirectTo = props => {
-    return <Component {...props} navigate={useNavigate()} />;
-  };
-  return RedirectTo;
-};
+export const withNavigate = (Component) => {
+  let RedirectTo = (props) => {
+    return <Component {...props} navigate={useNavigate()} />
+  }
+  return RedirectTo
+}
 
 class App extends React.Component {
   componentDidMount() {
-    this.props.initializeApp();
+    this.props.initializeApp()
   }
 
   render() {
@@ -41,17 +41,17 @@ class App extends React.Component {
           </Routes>
         </div>
       </div>
-    );
+    )
   }
 }
 
-const mapStateToProps = state => ({
-  initialized: state.app.initialized
-});
+const mapStateToProps = (state) => ({
+  initialized: state.app.initialized,
+})
 
 export default compose(
   connect(
     mapStateToProps,
     { initializeApp }
   )(App)
-);
+)
