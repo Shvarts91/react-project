@@ -114,4 +114,18 @@ export const savePhotoThunk = (file) => async (dispatch) => {
     dispatch(savePhotoSuccess(data.data.photos))
   }
 }
+
+export const saveProfile = (profile) => async (dispatch, getState) => {
+  const userId = getState().auth.userId
+  const data = await profileApiPage.saveProfile(profile)
+
+  if (data.resultCode === 0) {
+    if (userId != null) {
+      dispatch(profileThunkCreator(userId))
+    } else {
+      throw new Error("userId can't be null")
+    }
+  }
+}
+
 export default profileReducer
