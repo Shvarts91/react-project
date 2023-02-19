@@ -2,6 +2,7 @@
   "name": "react-way-of-samurai",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github.com/Shvarts91/react-project",
   "dependencies": {
     "axios": "^1.2.2",
     "classnames": "^2.3.2",
