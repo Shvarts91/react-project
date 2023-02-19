@@ -1,13 +1,13 @@
-.selectedPage {
-  font-weight: 700;
+
+.paginator {
+  margin: 10px;
 }
-.pages {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  margin-bottom: 20px;
+.pageNumber {
+  padding: 2px;
+  border: 1px solid grey;
 }
 
-.pages span {
-  cursor: pointer;
+.pageNumber.selectedPage {
+  font-weight: bold;
+  border-color: black;
 }

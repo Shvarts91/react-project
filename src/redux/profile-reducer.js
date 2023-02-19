@@ -113,13 +113,11 @@ export const getUsersStatusThunk = userId => async dispatch => {
 };
 
 export const updateStatusThunk = status => async dispatch => {
-  try {
-    let data = await profileApiPage.updateStatus(status);
-    if (data.resultCode === 0) {
-      dispatch(setStatus(status));
-    }
-    dispatch(setErrorMessage(data.messages[0] || ''));
-  } catch (error) {}
+  let data = await profileApiPage.updateStatus(status);
+  if (data.resultCode === 0) {
+    dispatch(setStatus(status));
+  }
+  dispatch(setErrorMessage(data.messages[0] || ''));
 };
 
 export const savePhotoThunk = file => async dispatch => {
