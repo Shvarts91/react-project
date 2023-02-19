@@ -1,8 +1,10 @@
 import { getAuthUserData } from "./auth-reducer.js";
 const INITIALIZED_SUCCESS = "INITIALIZED_SUCCESS";
+const SET_ERROR_MESSAGE = "SET_ERROR_MESSAGE";
 
 let initialState = {
-  initialized: false
+  initialized: false,
+  error: '',
 };
 
 const appReducer = (state = initialState, action) => {
@@ -10,6 +12,8 @@ const appReducer = (state = initialState, action) => {
     case INITIALIZED_SUCCESS: {
       return { ...state, initialized: true };
     }
+    case SET_ERROR_MESSAGE:
+      return  { ...state, error: action.payload }
 
     default:
       return state;
@@ -29,5 +33,10 @@ export const initializeApp = () => {
     });
   };
 };
+
+export const setErrorMessage = (payload) => ({
+  type: SET_ERROR_MESSAGE,
+  payload,
+})
 
 export default appReducer;

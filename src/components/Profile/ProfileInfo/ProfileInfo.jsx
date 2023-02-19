@@ -1,5 +1,5 @@
 import React from 'react'
-import Preloder from '../../common/Preloader/Preloader'
+import Preloader from '../../common/Preloader/Preloader'
 import s from './ProfileInfo.module.css'
 
 import ProfileStatusWithHooks from './ProfileStatusWithHooks'
@@ -10,7 +10,7 @@ import ProfileDataForm from './ProfileDataForm'
 const ProfileInfo = (props) => {
   let [editMode, setEditMode] = useState(false)
   if (!props.profile) {
-    return <Preloder />
+    return <Preloader />
   }
 
   const onMainPhotoSelected = (e) => {
@@ -21,7 +21,7 @@ const ProfileInfo = (props) => {
   return (
     <div className={s.descriptionBlock}>
       <div className={s.photoStatusBlock}>
-        <img src={props.profile.photos.large || userPhoto} />
+        <img src={props.profile.photos.large || userPhoto} alt="" />
         {props.isOwner && (
           <input type={'file'} onChange={onMainPhotoSelected} />
         )}
@@ -83,11 +83,13 @@ const ProfileData = ({ props, isOwner, goToEditMode }) => {
           if (props.profile.contacts[key]) {
             return (
               <Contact
+                key={key}
                 contactTitle={key}
                 contactValue={props.profile.contacts[key]}
               />
             )
           }
+          return null;
         })}
       </div>
     </div>

@@ -10,6 +10,7 @@ import Login from './components/Login/Login'
 import { connect } from 'react-redux'
 import { initializeApp } from './redux/app-reducer'
 import { compose } from 'redux'
+import { Error } from "./components/common/Error/Error";
 
 export const withNavigate = (Component) => {
   let RedirectTo = (props) => {
@@ -52,6 +53,7 @@ class App extends React.Component {
             <Route path="*" element={<div>404 NOT FOUND</div>} />
           </Routes>
         </div>
+        <Error />
       </div>
     )
   }

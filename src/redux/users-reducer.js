@@ -1,5 +1,6 @@
 import { usersApiPage } from '../api/api.js'
 import { updateObjectInArray } from '../utils/object-helpers.js'
+import {setErrorMessage} from "./app-reducer";
 const UNFOLLOW = 'UNFOLLOW'
 const FOLLOW = 'FOLLOW'
 const SET_USERS = 'SET_USERS'
@@ -67,7 +68,7 @@ const usersReduсer = (state = initialState, action) => {
         ...state,
         followingProgress: action.isFetching
           ? [...state.followingProgress, action.userId]
-          : state.followingProgress.filter((id) => id != action.userId),
+          : state.followingProgress.filter((id) => id !== action.userId),
       }
     }
     default:
@@ -133,18 +134,20 @@ const followUnfollowFlow = async (
     dispatch(actionCreator(userId))
   }
   dispatch(toggleFollowingProgress(false, userId))
+  dispatch(setErrorMessage(data.messages[0] || ''));
 }
 
 export const follow = (userId) => async (dispatch) => {
-  let apiMethod = usersApiPage.followUser.bind(userId)
+  let data = await usersApiPage.followUser.bind(userId)
   let actionCreator = followSuccess
-  followUnfollowFlow(dispatch, userId, apiMethod, actionCreator)
+  followUnfollowFlow(dispatch, userId, data, actionCreator)
 }
 
 export const unfollow = (userId) => async (dispatch) => {
-  let apiMethod = usersApiPage.unfollowUser.bind(userId)
+  let data = await usersApiPage.unfollowUser.bind(userId)
+
   let actionCreator = unfollowSuccess
-  followUnfollowFlow(dispatch, userId, apiMethod, actionCreator)
+  followUnfollowFlow(dispatch, userId, data, actionCreator)
 }
 
 export default usersReduсer

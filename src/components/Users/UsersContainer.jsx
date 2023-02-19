@@ -8,7 +8,7 @@ import {
   requestUsersThunkCreator,
 } from '../../redux/users-reducer'
 import React from 'react'
-import Preloder from '../common/Preloader/Preloader'
+import Preloader from '../common/Preloader/Preloader'
 import { compose } from 'redux'
 import { withRouter } from '../../hoc/withRouter'
 import {
@@ -37,7 +37,7 @@ class UsersContainer extends React.Component {
     // console.log('RENDER')
     return (
       <>
-        {this.props.isFetching ? <Preloder /> : null}
+        {this.props.isFetching ? <Preloader /> : null}
         <Users
           totalUsersCount={this.props.totalUsersCount}
           pageSize={this.props.pageSize}

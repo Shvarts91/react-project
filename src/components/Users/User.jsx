@@ -12,6 +12,7 @@ const User = ({ user, followingProgress, unfollow, follow }) => {
             <img
               src={user.photos.small != null ? user.photos.small : userPhoto}
               className={s.userPhoto}
+              alt=""
             />
           </NavLink>
         </div>

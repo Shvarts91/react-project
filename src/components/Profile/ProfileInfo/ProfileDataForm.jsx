@@ -125,7 +125,7 @@ const ProfileDataForm = ({ props, outEditMode }) => {
                 <b>Contacts:</b>
                 {Object.keys(props.profile.contacts).map((key) => {
                   return (
-                    <div>
+                    <div key={key}>
                       <label>
                         <b>{key}:</b>
                         <Field

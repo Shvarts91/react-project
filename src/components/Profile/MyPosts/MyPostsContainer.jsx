@@ -1,6 +1,5 @@
 import {
   addPostActionCreater,
-  updateNewPostTextActionCreater,
 } from '../../../redux/profile-reducer.js'
 
 import MyPosts from './MyPosts.jsx'

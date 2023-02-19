@@ -62,12 +62,12 @@ import s from './FormsControls.module.css'
 //   )
 // }
 
-export const ElemForm = ({ field, form: { touched, errors }, ...props }) => {
+export const ElemForm = ({ field, form: { touched, errors }, typeField, ...props }) => {
   const hasError = touched[field.name] && errors[field.name]
 
   return (
     <div className={s.formControl + ' ' + (hasError ? s.error : '')}>
-      <props.typeField {...field} {...props} />
+      {typeField === 'textarea' ? <textarea {...field} {...props} /> : <input {...field} {...props} />}
       {touched[field.name] && errors[field.name] && (
         <div className={s.error}>{errors[field.name]}</div>
       )}

@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 
-import s from './ProfileInfo.module.css'
+// import s from './ProfileInfo.module.css'
 
 const ProfileStatusWithHooks = (props) => {
   let [editMode, setEditMode] = useState(false)

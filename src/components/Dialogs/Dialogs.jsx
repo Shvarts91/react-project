@@ -12,7 +12,7 @@ const Dialogs = (props) => {
   ))
 
   let messageElements = props.dialogsPage.messages.map((m) => (
-    <Message message={m.message} />
+    <Message key={m.id} message={m.message} />
   ))
 
   const onAddMessage = (data) => {

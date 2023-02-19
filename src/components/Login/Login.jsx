@@ -74,7 +74,7 @@ const LoginForm = (props) => {
               remember me
             </div>
             <div>
-              {props.captchaUrl && <img src={props.captchaUrl} />}
+              {props.captchaUrl && <img src={props.captchaUrl} alt="" />}
               {props.captchaUrl && (
                 <div>
                   <label>
@@ -106,6 +106,7 @@ const LoginForm = (props) => {
 }
 
 const Login = (props) => {
+    console.log(props.error)
   return (
     <div>
       <h1>LOGIN</h1>
@@ -117,6 +118,7 @@ const Login = (props) => {
 const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
   captchaUrl: state.auth.captchaUrl,
+  error: state.app.error,
 })
 
 export default compose(
