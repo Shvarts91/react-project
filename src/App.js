@@ -19,8 +19,19 @@ export const withNavigate = (Component) => {
 }
 
 class App extends React.Component {
+  catchAllUnhandledErrors = (promiseRejectionEvent) => {
+    alert('Some error')
+  }
   componentDidMount() {
     this.props.initializeApp()
+    window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener(
+      'unhandledrejection',
+      this.catchAllUnhandledErrors
+    )
   }
 
   render() {
@@ -38,6 +49,7 @@ class App extends React.Component {
             <Route path="/profile/:userId/" element={<ProfileContainer />} />
             <Route path="/messages/*" element={<DialogsContainer />} />
             <Route path="/users/*" element={<UsersContainer />} />
+            <Route path="*" element={<div>404 NOT FOUND</div>} />
           </Routes>
         </div>
       </div>
