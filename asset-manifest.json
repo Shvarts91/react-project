@@ -1,15 +1,15 @@
 {
-  "main.css": "/Shvarts91/react-project/static/css/main.ece6adf2.chunk.css",
-  "main.js": "/Shvarts91/react-project/static/js/main.69848d82.chunk.js",
-  "main.js.map": "/Shvarts91/react-project/static/js/main.69848d82.chunk.js.map",
-  "static/js/1.640edbe3.chunk.js": "/Shvarts91/react-project/static/js/1.640edbe3.chunk.js",
-  "static/js/1.640edbe3.chunk.js.map": "/Shvarts91/react-project/static/js/1.640edbe3.chunk.js.map",
-  "runtime~main.js": "/Shvarts91/react-project/static/js/runtime~main.addc5287.js",
-  "runtime~main.js.map": "/Shvarts91/react-project/static/js/runtime~main.addc5287.js.map",
-  "static/media/user-img.png": "/Shvarts91/react-project/static/media/user-img.12d3f356.png",
-  "static/media/preloader.gif": "/Shvarts91/react-project/static/media/preloader.6f09789b.gif",
-  "static/css/main.ece6adf2.chunk.css.map": "/Shvarts91/react-project/static/css/main.ece6adf2.chunk.css.map",
-  "index.html": "/Shvarts91/react-project/index.html",
-  "precache-manifest.0dcaf2f2ce321d6808764a79ce879f3a.js": "/Shvarts91/react-project/precache-manifest.0dcaf2f2ce321d6808764a79ce879f3a.js",
-  "service-worker.js": "/Shvarts91/react-project/service-worker.js"
+  "main.css": "/static/css/main.ece6adf2.chunk.css",
+  "main.js": "/static/js/main.45351a9b.chunk.js",
+  "main.js.map": "/static/js/main.45351a9b.chunk.js.map",
+  "static/js/1.640edbe3.chunk.js": "/static/js/1.640edbe3.chunk.js",
+  "static/js/1.640edbe3.chunk.js.map": "/static/js/1.640edbe3.chunk.js.map",
+  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
+  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
+  "static/media/user-img.png": "/static/media/user-img.12d3f356.png",
+  "static/media/preloader.gif": "/static/media/preloader.6f09789b.gif",
+  "static/css/main.ece6adf2.chunk.css.map": "/static/css/main.ece6adf2.chunk.css.map",
+  "index.html": "/index.html",
+  "precache-manifest.a163fe7d9e25de05c046a48ec1c831c8.js": "/precache-manifest.a163fe7d9e25de05c046a48ec1c831c8.js",
+  "service-worker.js": "/service-worker.js"
 }
