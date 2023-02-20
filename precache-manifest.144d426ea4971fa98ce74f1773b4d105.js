@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "./static/media/preloader.6f09789b.gif"
   },
   {
-    "revision": "30167b40c54ec5070ca1911d420b58fd",
+    "revision": "f81001de90c493fab28d121847d3d82b",
     "url": "./index.html"
   }
 ];
