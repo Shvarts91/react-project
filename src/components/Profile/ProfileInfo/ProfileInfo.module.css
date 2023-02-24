@@ -1,14 +1,9 @@
-/* .descriptionBlock {
-  padding: 10px;
-} */
-
 .view img {
   width: 100%;
 }
 .descriptionBlock {
   display: flex;
   gap: 20px;
-  align-items: center;
 }
 .photoBlock {
   position: relative;
@@ -37,11 +32,13 @@
 }
 
 .aboutMeBlock {
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
-
   font-family: Georgia, serif;
   font-size: 18px;
+  gap: 16px;
+  min-height: 100%;
 }
 
 .myStatus {
@@ -55,11 +52,15 @@
   display: inline-block;
 }
 .aboutMeBlockTop {
-  margin-bottom: 16px;
+}
+
+.blockContacts {
+  flex-grow: 1;
 }
 
 .aboutMeBlockButton {
-  margin-top: 16px;
+  flex-shrink: 0;
+  justify-self: end;
 }
 
 .titleContacts {

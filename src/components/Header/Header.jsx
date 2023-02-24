@@ -4,7 +4,7 @@ import s from './Header.module.css'
 import { Button } from '@mui/material'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
-import Container from '@mui/material/Container'
+import styled from '@emotion/styled'
 
 const Header = (props) => {
   const navigate = useNavigate()
@@ -14,8 +14,16 @@ const Header = (props) => {
     navigate('login')
   }
 
+  const StyledAppBar = styled(AppBar)`
+    @media (min-width: 600px) {
+      .MuiToolbar-root {
+        min-height: 60px;
+      }
+    }
+  `
+
   return (
-    <AppBar position="fixed">
+    <StyledAppBar position="fixed">
       <Toolbar className={s.header}>
         <div>
           <img
@@ -41,7 +49,7 @@ const Header = (props) => {
           )}
         </div>
       </Toolbar>
-    </AppBar>
+    </StyledAppBar>
 
     // <header className={s.header}>
     //   <img

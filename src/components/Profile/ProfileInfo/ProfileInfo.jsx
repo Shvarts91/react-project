@@ -91,7 +91,7 @@ const ProfileData = ({ props, isOwner, goToEditMode }) => {
         </div>
       </div>
 
-      <div>
+      <div className={s.blockContacts}>
         <span className={s.titleContacts}>
           <b>Contacts:</b>
         </span>
