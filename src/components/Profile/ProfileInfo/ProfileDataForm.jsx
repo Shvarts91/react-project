@@ -230,6 +230,22 @@ const ProfileDataForm = ({ props, outEditMode }) => {
             size="small"
           />
         </div>
+        {myFields.map(({label, name}) => (
+            <div>
+              <TextField
+                  sx={{mb: 2}}
+                  label={label}
+                  name={name}
+                  fullWidth
+                  value={formik.values[name]}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={formik.touched[name] && Boolean(formik.errors[name])}
+                  helperText={formik.touched[name] && formik.errors[name]}
+
+              />
+          </div>
+        ))}
         <div>
           <TextField
             label="Post"
@@ -254,4 +270,20 @@ const ProfileDataForm = ({ props, outEditMode }) => {
     </div>
   )
 }
+
+const myFields = [
+  {
+    name: 'fullName',
+    label: 'Full Name',
+  },
+  {
+    name: 'facebook',
+    label: 'Facebook',
+  },
+  {
+    name: 'website',
+    label: 'Website',
+  }
+];
+
 export default ProfileDataForm
