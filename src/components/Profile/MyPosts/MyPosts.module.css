@@ -9,3 +9,6 @@
 .error {
   color: tomato;
 }
+.inputAddPost {
+  width: calc(35% - 20px);
+}

@@ -1,6 +1,6 @@
 .nav {
   grid-area: n;
-  background-color: rgb(135, 148, 222);
+  background-color: #81b622;
   padding: 20px;
 }
 .item {
@@ -13,10 +13,15 @@
 }
 
 .item a {
-  color: white;
+  color: #000;
   text-decoration: none;
+  transition: transform 0.3s ease;
+  display: block;
+}
+.item a:hover {
+  transform: translateX(10px);
 }
 
 .item .active {
-  color: gold;
+  color: #ecf87f;
 }

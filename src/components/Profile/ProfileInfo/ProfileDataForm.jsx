@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux/es/exports'
 import { saveProfile } from '../../../redux/profile-reducer'
 import * as Yup from 'yup'
 import { string } from 'yup'
+import Button from '@mui/material/Button'
 
 const ProfileDataForm = ({ props, outEditMode }) => {
   const { contacts, photos, userId, ...fields } = props.profile
@@ -69,7 +70,10 @@ const ProfileDataForm = ({ props, outEditMode }) => {
           return (
             <Form>
               <div>
-                <button type="submit">Save</button>
+                <Button type="submit" variant="outlined">
+                  Save
+                </Button>
+                {/* <button type="submit">Save</button> */}
               </div>
               <div>
                 <label>

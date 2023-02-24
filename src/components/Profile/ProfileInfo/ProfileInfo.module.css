@@ -1,7 +1,70 @@
-.descriptionBlock {
+/* .descriptionBlock {
   padding: 10px;
-}
+} */
 
 .view img {
   width: 100%;
+}
+.descriptionBlock {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.photoBlock {
+  position: relative;
+  flex: 0 0 35%;
+}
+.photoBlock img {
+  width: 100%;
+  height: auto;
+}
+
+.photoBlock .buttonPhoto {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 14px;
+  border: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.photoBlock:hover .buttonPhoto {
+  opacity: 1;
+}
+
+.aboutMeBlock {
+  display: flex;
+  flex-direction: column;
+
+  font-family: Georgia, serif;
+  font-size: 18px;
+}
+
+.myStatus {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+}
+.status {
+  display: inline-block;
+}
+.aboutMeBlockTop {
+  margin-bottom: 16px;
+}
+
+.aboutMeBlockButton {
+  margin-top: 16px;
+}
+
+.titleContacts {
+  font-size: 20px;
+}
+.contacts {
+  padding-left: 10px;
 }

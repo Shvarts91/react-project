@@ -1,6 +1,6 @@
 import { usersApiPage } from '../api/api.js'
 import { updateObjectInArray } from '../utils/object-helpers.js'
-import {setErrorMessage} from "./app-reducer";
+import { setErrorMessage } from './app-reducer'
 const UNFOLLOW = 'UNFOLLOW'
 const FOLLOW = 'FOLLOW'
 const SET_USERS = 'SET_USERS'
@@ -20,20 +20,12 @@ let initialState = {
 
 const usersReduсer = (state = initialState, action) => {
   switch (action.type) {
-    // case 'FAKE':
-    //   return { ...state, fake: state.fake + 1 }
     case FOLLOW:
       return {
         ...state,
         users: updateObjectInArray(state.users, action.userId, 'id', {
           followed: true,
         }),
-        // users: state.users.map((u) => {
-        //   if (u.id === action.userId) {
-        //     return { ...u, followed: true }
-        //   }
-        //   return u
-        // }),
       }
     case UNFOLLOW:
       return {
@@ -41,12 +33,6 @@ const usersReduсer = (state = initialState, action) => {
         users: updateObjectInArray(state.users, action.userId, 'id', {
           followed: false,
         }),
-        // users: state.users.map((u) => {
-        //   if (u.id === action.userId) {
-        //     return { ...u, followed: false }
-        //   }
-        //   return u
-        // }),
       }
     case SET_USERS: {
       return {
@@ -134,7 +120,7 @@ const followUnfollowFlow = async (
     dispatch(actionCreator(userId))
   }
   dispatch(toggleFollowingProgress(false, userId))
-  dispatch(setErrorMessage(data.messages[0] || ''));
+  dispatch(setErrorMessage(data.messages[0] || ''))
 }
 
 export const follow = (userId) => async (dispatch) => {

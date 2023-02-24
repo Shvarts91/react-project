@@ -12,6 +12,9 @@
 
 .app-wrapper-content {
   grid-area: c;
-  background-color: rgb(177, 143, 135);
+  background-color: #ecf87f;
   padding: 0 20px 20px 20px;
+}
+.notFound {
+  margin-top: 20px;
 }
