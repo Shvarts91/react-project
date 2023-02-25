@@ -51,12 +51,16 @@
 .status {
   display: inline-block;
 }
-.aboutMeBlockTop {
-}
 
 .titleContacts {
   font-size: 20px;
 }
+
+.titleContactsForm {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
 .contacts {
   padding-left: 10px;
 }

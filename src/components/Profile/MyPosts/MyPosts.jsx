@@ -1,9 +1,9 @@
 import React from 'react'
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
-//import { Field, Form, Formik } from 'formik'
+
 import * as Yup from 'yup'
-//import { ElemForm } from '../../FormsControls/FormsControls'
+
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import { useFormik } from 'formik'
@@ -27,39 +27,6 @@ const MyPosts = (props) => {
     </div>
   )
 }
-
-// const AddPostForm = (props) => {
-//   return (
-//     <Formik
-//       initialValues={{
-//         addPost: '',
-//       }}
-//       onSubmit={(values, action) => {
-//         props.addPost(values)
-//         action.resetForm()
-//       }}
-//       validationSchema={Yup.object({
-//         addPost: Yup.string()
-//           .max(5, 'Must be 5 characters or less')
-//           .required('Required'),
-//       })}
-//     >
-//       {(props) => {
-//         return (
-//           <Form>
-//             <Field name="addPost" component={ElemForm} typeField={'textarea'} />
-//             <div>
-//               <Button type="submit" variant="contained">
-//                 Add post
-//               </Button>
-//               {/* <button type="submit">Add post</button> */}
-//             </div>
-//           </Form>
-//         )
-//       }}
-//     </Formik>
-//   )
-// }
 
 const validationSchema = yup.object({
   addPost: Yup.string()

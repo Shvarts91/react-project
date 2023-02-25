@@ -7,6 +7,7 @@ import userPhoto from '../../../assets/images/user-img.png'
 import { useState } from 'react'
 import ProfileDataForm from './ProfileDataForm'
 import Button from '@mui/material/Button'
+import { Link } from '@mui/material'
 
 const ProfileInfo = (props) => {
   let [editMode, setEditMode] = useState(false)
@@ -64,7 +65,10 @@ const ProfileInfo = (props) => {
 const Contact = ({ contactTitle, contactValue }) => {
   return (
     <div>
-      <b>{contactTitle}:</b> {contactValue}
+      <b>{contactTitle}:</b>
+      <Link target="blank" href={contactValue}>
+        {contactValue}
+      </Link>
     </div>
   )
 }
@@ -99,13 +103,11 @@ const ProfileData = ({ props, isOwner, goToEditMode }) => {
           {Object.keys(props.profile.contacts).map((key) => {
             if (props.profile.contacts[key]) {
               return (
-                <a target="blank" href="">
-                  <Contact
-                    key={key}
-                    contactTitle={key}
-                    contactValue={props.profile.contacts[key]}
-                  />
-                </a>
+                <Contact
+                  key={key}
+                  contactTitle={key}
+                  contactValue={props.profile.contacts[key]}
+                />
               )
             }
             return null

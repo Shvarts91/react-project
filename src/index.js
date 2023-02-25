@@ -12,14 +12,9 @@ import { ThemeProvider } from '@mui/material/styles'
 
 import theme from './theme'
 
-// 7. Контакты сделать ссылками, добавить target=blank
 // 8. Добавить иконку справа для статуса
 // 9. Переделать логин форму с mui
 // 10. Составить письмо чтобы пофиксить backend
-
-// 1. Чекбокс
-// 2. Тег а только на ссылки
-// 3. Не переходит по ссылке
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>

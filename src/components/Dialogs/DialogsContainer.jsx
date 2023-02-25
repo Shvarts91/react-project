@@ -4,43 +4,11 @@ import { connect } from 'react-redux'
 
 import { withAuthRedirect } from '../../hoc/withAuthRedirect.js'
 import { compose } from 'redux'
-import {withRouter} from "../../hoc/withRouter";
-/*
-const DialogsContainer = () => {
-  return (
-    <StoreContext.Consumer>
-      {(store) => {
-        let state = store.getState()
+import { withRouter } from '../../hoc/withRouter'
 
-        let addMessage = () => {
-          store.dispatch(addMessageActionCreater())
-        }
-
-        let onMessageChange = (e) => {
-          let text = e.target.value
-          let action = updateNewMessageTextActionCreater(text)
-          store.dispatch(action)
-        }
-
-        return (
-          <Dialogs
-            onMessageChange={onMessageChange}
-            addMessage={addMessage}
-            newMessageText={state.dialogsPage.newMessageText}
-            dialogs={state.dialogsPage.dialogs}
-            messages={state.dialogsPage.messages}
-          />
-        )
-      }}
-    </StoreContext.Consumer>
-  )
-}
-*/
 let mapStateToProps = (state) => {
   return {
     dialogsPage: state.dialogsPage,
-    //dialogs: state.dialogsPage.dialogs,
-    //messages: state.dialogsPage.messages,
   }
 }
 
