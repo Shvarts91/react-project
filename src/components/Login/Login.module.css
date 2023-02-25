@@ -1,0 +1,10 @@
+.formError {
+  margin: 10px 0 10px 0;
+  border: 1px solid red;
+  color: red;
+  padding: 5px;
+  display: inline-block;
+}
+.inputEmail {
+  margin-bottom: 12px;
+}

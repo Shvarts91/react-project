@@ -1,8 +1,8 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-
 import s from './ProfileInfo.module.css'
+import CreateIcon from '@mui/icons-material/Create'
 
 const ProfileStatusWithHooks = (props) => {
   let [editMode, setEditMode] = useState(false)
@@ -34,6 +34,7 @@ const ProfileStatusWithHooks = (props) => {
         <div>
           <span className={s.myStatus} onClick={activateEditMode}>
             {props.status || 'No Status'}
+            <CreateIcon />
           </span>
         </div>
       )}

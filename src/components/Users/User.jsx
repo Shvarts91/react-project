@@ -20,6 +20,7 @@ const User = ({ user, followingProgress, unfollow, follow }) => {
         <div>
           {user.followed ? (
             <Button
+              variant="outlined"
               disabled={followingProgress.some((id) => id === user.id)}
               onClick={() => {
                 unfollow(user.id)
@@ -29,6 +30,7 @@ const User = ({ user, followingProgress, unfollow, follow }) => {
             </Button>
           ) : (
             <Button
+              variant="outlined"
               disabled={followingProgress.some((id) => id === user.id)}
               onClick={() => {
                 follow(user.id)

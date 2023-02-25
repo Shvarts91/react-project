@@ -65,7 +65,7 @@ const ProfileInfo = (props) => {
 const Contact = ({ contactTitle, contactValue }) => {
   return (
     <div>
-      <b>{contactTitle}:</b>
+      <b>{contactTitle}: </b>
       <Link target="blank" href={contactValue}>
         {contactValue}
       </Link>

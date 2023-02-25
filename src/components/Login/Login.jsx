@@ -3,7 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { login } from '../../redux/auth-reducer'
 import { useNavigate } from 'react-router-dom'
-import s from './../FormsControls/FormsControls.module.css'
+import s from './Login.module.css'
 import { compose } from 'redux'
 import { withRouter } from '../../hoc/withRouter'
 import TextField from '@mui/material/TextField'
@@ -52,7 +52,7 @@ const LoginForm = (props) => {
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
-        <div>
+        <div className={s.inputEmail}>
           <TextField
             id="email"
             name="email"
@@ -78,7 +78,6 @@ const LoginForm = (props) => {
           />
         </div>
         <div>
-          <span />
           <FormGroup>
             <FormControlLabel
               control={
@@ -89,6 +88,7 @@ const LoginForm = (props) => {
               }
               onChange={formik.handleChange}
               name="rememberMe"
+              label="Remember Me"
             />
           </FormGroup>
         </div>

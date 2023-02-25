@@ -5,9 +5,10 @@
   gap: 5px;
 }
 .pageNumber {
-  padding: 3px;
+  padding: 5px;
   border: 1px solid grey;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .pageNumber.selectedPage {

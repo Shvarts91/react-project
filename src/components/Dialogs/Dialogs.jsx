@@ -2,9 +2,7 @@ import React from 'react'
 import s from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem'
 import Message from './Message/Message'
-
 import * as Yup from 'yup'
-
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import { useFormik } from 'formik'
@@ -34,42 +32,6 @@ const Dialogs = (props) => {
   )
 }
 
-// const AddMessageForm = (props) => {
-//   return (
-//     <Formik
-//       initialValues={{
-//         enterMessage: '',
-//       }}
-//       onSubmit={(values, action) => {
-//         props.addMessage(values)
-//         action.resetForm()
-//       }}
-//       validationSchema={Yup.object({
-//         enterMessage: Yup.string()
-//           .max(5, 'Must be 5 characters or less')
-//           .required('Required'),
-//       })}
-//     >
-//       {(form) => {
-//         return (
-//           <Form>
-//             <Field
-//               placeholder="Enter your message"
-//               name="enterMessage"
-//               component={ElemForm}
-//               typeField={'textarea'}
-//             />
-
-//             <div>
-//               <button type="submit">Add message</button>
-//             </div>
-//           </Form>
-//         )
-//       }}
-//     </Formik>
-//   )
-// }
-
 const validationSchema = yup.object({
   enterMessage: Yup.string()
     .max(5, 'Must be 5 characters or less')
@@ -91,7 +53,7 @@ const AddMessageForm = (props) => {
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
-        <div className={s.inputAddPost}>
+        <div className={s.inputEnterMessage}>
           <TextField
             label="Enter your message"
             name="enterMessage"
