@@ -54,15 +54,6 @@
 .aboutMeBlockTop {
 }
 
-.blockContacts {
-  flex-grow: 1;
-}
-
-.aboutMeBlockButton {
-  flex-shrink: 0;
-  justify-self: end;
-}
-
 .titleContacts {
   font-size: 20px;
 }

@@ -7,6 +7,10 @@ import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+import { Checkbox } from '@mui/material'
+import { FormGroup } from '@mui/material'
+import { FormControlLabel } from '@mui/material'
+
 // import * as Yup from 'yup'
 //import s from './../FormsControls/FormsControls.module.css'
 // import { ElemForm } from '../../FormsControls/FormsControls'
@@ -214,8 +218,8 @@ const ProfileDataForm = ({ props, outEditMode }) => {
 
   return (
     <div>
-      <form onSubmit={formik.handleSubmit}>
-        <div>
+      <form className={s.aboutMeBlockForm} onSubmit={formik.handleSubmit}>
+        {/* <div>
           <TextField
             label="About Me"
             id="aboutMe"
@@ -229,22 +233,85 @@ const ProfileDataForm = ({ props, outEditMode }) => {
             helperText={formik.touched.aboutMe && formik.errors.addPost}
             size="small"
           />
-        </div>
+        </div> */}
+
         <div>
+          {myFields.map(({ label, name }) => (
+            <div>
+              <TextField
+                sx={{ mb: 2 }}
+                label={label}
+                name={name}
+                fullWidth
+                multiline
+                value={formik.values[name]}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched[name] && Boolean(formik.errors[name])}
+                helperText={formik.touched[name] && formik.errors[name]}
+                size="small"
+              />
+            </div>
+          ))}
+        </div>
+
+        <div>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={formik.values.lookingForAJobDescription}
+                  onChange={formik.handleChange}
+                />
+              }
+              label="Looking For A Job"
+              name="lookingForAJob"
+            />
+          </FormGroup>
           <TextField
-            label="Post"
-            id="addPost"
-            name="addPost"
+            sx={{ mb: 2 }}
+            label="My professional skills:"
+            id="lookingForAJobDescription"
+            name="lookingForAJobDescription"
             multiline
-            rows={3}
+            rows={2}
             fullWidth
-            value={formik.values.addPost}
+            value={formik.values.lookingForAJobDescription}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            error={formik.touched.addPost && Boolean(formik.errors.addPost)}
-            helperText={formik.touched.addPost && formik.errors.addPost}
+            error={
+              formik.touched.lookingForAJobDescription &&
+              Boolean(formik.errors.addPlookingForAJobDescriptionost)
+            }
+            helperText={
+              formik.touched.lookingForAJobDescription &&
+              formik.errors.lookingForAJobDescription
+            }
+            size="small"
           />
         </div>
+        <div className={s.titleContacts}>
+          <b>Contacts:</b>
+        </div>
+        <div className={s.contacts}>
+          {myContacts.map(({ label, name }) => (
+            <div>
+              <TextField
+                sx={{ mb: 2 }}
+                label={label}
+                name={name}
+                fullWidth
+                value={formik.values[name]}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched[name] && Boolean(formik.errors[name])}
+                helperText={formik.touched[name] && formik.errors[name]}
+                size="small"
+              />
+            </div>
+          ))}
+        </div>
+
         <div>
           <Button type="submit" variant="outlined">
             Save
@@ -254,4 +321,54 @@ const ProfileDataForm = ({ props, outEditMode }) => {
     </div>
   )
 }
+
+const myFields = [
+  {
+    name: 'fullName',
+    label: 'Full Name',
+  },
+  {
+    name: 'aboutMe',
+    label: 'About me:',
+  },
+  // {
+  //   name: 'lookingForAJob',
+  //   label: 'Looking for a job:',
+  // },
+]
+
+const myContacts = [
+  {
+    name: 'facebook',
+    label: 'Facebook:',
+  },
+  {
+    name: 'website',
+    label: 'Website:',
+  },
+  {
+    name: 'vk',
+    label: 'Vk:',
+  },
+  {
+    name: 'twitter',
+    label: 'Twitter:',
+  },
+  {
+    name: 'instagram',
+    label: 'Instagram:',
+  },
+  {
+    name: 'youtube',
+    label: 'Youtube:',
+  },
+  {
+    name: 'github',
+    label: 'Github:',
+  },
+  {
+    name: 'mainLink',
+    label: 'Main Link:',
+  },
+]
 export default ProfileDataForm

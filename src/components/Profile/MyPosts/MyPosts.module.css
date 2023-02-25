@@ -11,4 +11,5 @@
 }
 .inputAddPost {
   width: calc(35% - 20px);
+  margin-bottom: 16px;
 }

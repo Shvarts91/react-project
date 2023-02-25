@@ -99,11 +99,13 @@ const ProfileData = ({ props, isOwner, goToEditMode }) => {
           {Object.keys(props.profile.contacts).map((key) => {
             if (props.profile.contacts[key]) {
               return (
-                <Contact
-                  key={key}
-                  contactTitle={key}
-                  contactValue={props.profile.contacts[key]}
-                />
+                <a target="blank" href="">
+                  <Contact
+                    key={key}
+                    contactTitle={key}
+                    contactValue={props.profile.contacts[key]}
+                  />
+                </a>
               )
             }
             return null
