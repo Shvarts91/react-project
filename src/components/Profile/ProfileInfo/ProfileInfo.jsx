@@ -36,6 +36,8 @@ const ProfileInfo = (props) => {
           <ProfileStatusWithHooks
             status={props.status}
             updateStatus={props.updateStatus}
+            authorizedUserId={props.authorizedUserId}
+            profileUserId={props.profile.userId}
           />
         </div>
       </div>

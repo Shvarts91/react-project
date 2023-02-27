@@ -16,12 +16,14 @@ const ProfileStatusWithHooks = (props) => {
   )
 
   const activateEditMode = () => {
-    setEditMode(true)
+    props.authorizedUserId === props.profileUserId
+      ? setEditMode(true)
+      : setEditMode(false)
   }
 
   const deactivateEditMode = () => {
     setEditMode(false)
-    props.updateStatus(status)
+    props.authorizedUserId === props.profileUserId && props.updateStatus(status)
   }
 
   const onStatusChange = (e) => {
@@ -34,7 +36,7 @@ const ProfileStatusWithHooks = (props) => {
         <div>
           <span className={s.myStatus} onClick={activateEditMode}>
             {props.status || 'No Status'}
-            <CreateIcon />
+            {props.authorizedUserId === props.profileUserId && <CreateIcon />}
           </span>
         </div>
       )}
